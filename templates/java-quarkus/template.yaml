@@ -3,7 +3,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: java-quarkus
-  title:  KP Quarkus Java - Trusted Application Pipeline
+  title:  Quarkus Java - Trusted Application Pipeline
   description: Quarkus Java example with advanced continuous integration pipeline covering building, CVE scanning, security scanning, signatures, attestations, SLSA provenance and SBOM along with Gitops-based continuous deployment.
   tags: ["java", "quarkus", "sscs", "sbom", "acs"]
 spec:
@@ -132,10 +132,6 @@ spec:
                   type: string
                   default: gitlab.com
                   ui:help: "You can also provide the on-prem gitlab server, example: gitlab-gitlab.apps.cluster-ljg9z.sandbox219.opentlc.com"
-                glPort:
-                  title: gitlab hosted port
-                  type: string
-                  default: ':50443'
                 ciType:
                   title: CI Provider
                   type: string
@@ -393,8 +389,6 @@ spec:
         # name set in rhdh config
         argoInstance: default
         namespace: tssc-gitops
-        # KP added the port 50443 for my local gitlab
-        # repoUrl: https://${{ parameters.glHost }}${{ parameters.glPort }}/${{ parameters.repoName }}-gitops.git
         repoUrl: https://${{ parameters.ghHost if parameters.hostType === 'GitHub' else (parameters.glHost if parameters.hostType === 'GitLab' else parameters.bbHost)}}/${{ parameters.workspace if parameters.hostType === 'Bitbucket' else (parameters.ghOwner if parameters.hostType === 'GitHub' else parameters.glOwner)  }}/${{ parameters.repoName }}-gitops.git
         path: './app-of-apps'
     # The wait for Repository CRs to be created, so the creation of the source repository triggers the first build.
