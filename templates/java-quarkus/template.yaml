@@ -3,7 +3,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: kp-java-quarkus
-  title: kp Quarkus Java - Trusted Application Pipeline
+  title: kp v2 Quarkus Java - Trusted Application Pipeline
   description: Quarkus Java example with advanced continuous integration pipeline covering building, CVE scanning, security scanning, signatures, attestations, SLSA provenance and SBOM along with Gitops-based continuous deployment.
   tags: ["java", "quarkus", "sscs", "sbom", "acs"]
 spec:
@@ -393,7 +393,7 @@ spec:
         # name set in rhdh config
         argoInstance: default
         namespace: tssc-gitops
-        repoUrl: https://${{ parameters.ghHost if parameters.hostType === 'GitHub' else (parameters.glHost if parameters.hostType === 'GitLab' else parameters.bbHost)}}/${{ parameters.workspace if parameters.hostType === 'Bitbucket' else (parameters.ghOwner if parameters.hostType === 'GitHub' else parameters.glOwner)  }}/${{ parameters.repoName }}-gitops.git
+        repoUrl: https://${{ parameters.ghHost if parameters.hostType === 'GitHub' else (parameters.glHost if parameters.hostType === 'GitLab' else parameters.bbHost)}}/${{ parameters.workspace if parameters.hostType === 'Bitbucket' else (parameters.ghOwner if parameters.hostType === 'GitHub' else parameters.glOwner)  }}${{ parameters.glPort }}/${{ parameters.repoName }}-gitops.git
         path: './app-of-apps'
     # The wait for Repository CRs to be created, so the creation of the source repository triggers the first build.
     - id: wait-for-sync
