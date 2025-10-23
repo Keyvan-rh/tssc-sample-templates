@@ -132,6 +132,10 @@ spec:
                   type: string
                   default: gitlab.com
                   ui:help: "You can also provide the on-prem gitlab server, example: gitlab-gitlab.apps.cluster-ljg9z.sandbox219.opentlc.com"
+                glPort:
+                  title: Port that gitlab is hosted on
+                  type: string
+                  default: ':50443'
                 ciType:
                   title: CI Provider
                   type: string
