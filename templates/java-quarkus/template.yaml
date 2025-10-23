@@ -394,8 +394,8 @@ spec:
         argoInstance: default
         namespace: tssc-gitops
         # KP added the port 50443 for my local gitlab
-        repoUrl: https://${{ parameters.glHost }}${{ parameters.glPort }}/${{ parameters.repoName }}-gitops.git
-        #repoUrl: https://${{ parameters.ghHost if parameters.hostType === 'GitHub' else (parameters.glHost if parameters.hostType === 'GitLab' else parameters.bbHost)}}/${{ parameters.workspace if parameters.hostType === 'Bitbucket' else (parameters.ghOwner if parameters.hostType === 'GitHub' else parameters.glOwner)  }}':50443'/${{ parameters.repoName }}-gitops.git
+        # repoUrl: https://${{ parameters.glHost }}${{ parameters.glPort }}/${{ parameters.repoName }}-gitops.git
+        repoUrl: https://${{ parameters.ghHost if parameters.hostType === 'GitHub' else (parameters.glHost if parameters.hostType === 'GitLab' else parameters.bbHost)}}/${{ parameters.workspace if parameters.hostType === 'Bitbucket' else (parameters.ghOwner if parameters.hostType === 'GitHub' else parameters.glOwner)  }}/${{ parameters.repoName }}-gitops.git
         path: './app-of-apps'
     # The wait for Repository CRs to be created, so the creation of the source repository triggers the first build.
     - id: wait-for-sync
