@@ -3,7 +3,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: java-quarkus
-  title:  kp v1 Quarkus Java  - TEST
+  title: kp v1 Quarkus Java
   description: kp Quarkus Java example with advanced continuous integration pipeline covering building, CVE scanning, security scanning, signatures, attestations, SLSA provenance and SBOM along with Gitops-based continuous deployment.
   tags: ["java", "quarkus", "sscs", "sbom", "acs"]
 spec:
