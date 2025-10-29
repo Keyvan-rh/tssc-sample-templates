@@ -3,7 +3,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: java-quarkus-kp
-  title: kp v2 Quarkus
+  title: kp v3 Quarkus
   description: kp Quarkus example with advanced continuous integration pipeline covering building, CVE scanning, security scanning, signatures, attestations, SLSA provenance and SBOM along with Gitops-based continuous deployment.
   tags: ["java", "quarkus", "sscs", "sbom", "acs"]
 spec:
@@ -523,14 +523,14 @@ spec:
       action: catalog:register
       input:
         #repoContentsUrl: ${{ steps['publish-github-source'].output.repoContentsUrl if steps['publish-github-source'].output else (steps['publish-gitlab-source'].output.repoContentsUrl  if steps['publish-gitlab-source'].output else steps['publish-bitbucket-source'].output.repoContentsUrl) }}
-        repoContentsUrl: 'gitlab.keyvan.home:50443/root/quarkus3/-/blob/main'
+        repoContentsUrl: 'gitlab.keyvan.home/root/quarkus3/-/blob/main'
         catalogInfoPath: '/catalog-info.yaml'
     - id: register-gitops
       name: Register Gitops
       action: catalog:register
       input:
         #repoContentsUrl: ${{ steps['publish-github-gitops'].output.repoContentsUrl if steps['publish-github-gitops'].output else (steps['publish-gitlab-gitops'].output.repoContentsUrl  if steps['publish-gitlab-gitops'].output else steps['publish-bitbucket-gitops'].output.repoContentsUrl) }}
-        repoContentsUrl: 'gitlab.keyvan.home:50443/root/quarkus3/-/blob/main'
+        repoContentsUrl: 'gitlab.keyvan.home/root/quarkus3-gitops/-/blob/main'
         catalogInfoPath: '/catalog-info.yaml'
 
   #
