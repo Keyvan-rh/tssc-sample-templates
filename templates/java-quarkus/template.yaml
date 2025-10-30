@@ -360,7 +360,7 @@ spec:
       if: ${{ parameters.hostType === 'GitLab' }}
       input:
         sourcePath: gitops
-        allowedHosts: ['${{ parameters.glHost }}']
+        allowedHosts: ['${{ parameters.glHost }}:50443']
         description: This is GitOps repository for ${{ parameters.name }}
         repoUrl:  ${{ parameters.glHost }}?owner=${{ parameters.glOwner }}&repo=${{ parameters.repoName }}-gitops
         defaultBranch: ${{ parameters.branch }}
